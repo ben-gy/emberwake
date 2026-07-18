@@ -1,0 +1,21 @@
+{
+  "name": "emberwake",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Outrun the dark — your momentum is your speed, your life and your score all at once.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "jsdom": "^25.0.0"
+  }
+}

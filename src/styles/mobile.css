@@ -1,0 +1,115 @@
+/**
+ * mobile.css — the baseline every game needs to feel like an app on a phone.
+ * Copied from patterns/. Imported FIRST so the game CSS can override any rule.
+ * `user-scalable=no` is ignored by iOS Safari; touch-action + the gesture guard
+ * in mobile.ts are what actually block zoom.
+ */
+
+:root {
+  --vh: 1vh;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overscroll-behavior: none;
+  background-color: var(--bg, #0a0713);
+}
+
+html,
+body {
+  touch-action: manipulation;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+[contenteditable],
+.selectable {
+  user-select: text;
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
+}
+
+button,
+[role='button'],
+a,
+label,
+summary {
+  touch-action: manipulation;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+textarea,
+select {
+  font-size: max(16px, 1em);
+}
+
+button,
+[role='button'] {
+  min-height: 44px;
+  min-width: 44px;
+  cursor: pointer;
+}
+
+.board,
+.field,
+canvas,
+.drag-surface {
+  touch-action: none;
+}
+
+body.playing .site-footer {
+  display: none !important;
+}
+
+.control-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.control-layer > * {
+  pointer-events: auto;
+}
+
+.safe-inset {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
