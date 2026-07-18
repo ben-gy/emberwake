@@ -116,11 +116,11 @@ function saveGhost(m: Mode, sd: number, run: GhostRun): void {
   const prev = loadGhost(m, sd);
   if (prev && prev.d >= run.d) return;
   store.set(ghostKey(m, sd), run);
-  // prune: keep a small LRU of ghost keys
-  const keys = store.get<string[]>('ghostKeys', []);
+  // prune: keep a small LRU of ghost keys so replays never fill the quota
   const k = ghostKey(m, sd);
+  const keys = store.get<string[]>('ghostKeys', []);
   const next = [k, ...keys.filter((x) => x !== k)].slice(0, 18);
-  for (const old of keys.filter((x) => !next.includes(x))) store.remove(old.replace('game:emberwake:', ''));
+  for (const old of keys) if (!next.includes(old)) store.remove(old);
   store.set('ghostKeys', next);
 }
 
