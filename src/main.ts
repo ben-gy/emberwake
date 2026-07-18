@@ -339,8 +339,14 @@ function render(alpha: number): void {
   updateHud();
 }
 
+let lastDistShown = -1;
 function updateHud(): void {
-  ui.dist.innerHTML = `${Math.round(s.x)}<span class="unit">m</span>`;
+  // only touch the DOM when the metre count actually ticks — this runs every frame
+  const d = Math.round(s.x);
+  if (d !== lastDistShown) {
+    lastDistShown = d;
+    ui.dist.innerHTML = `${d}<span class="unit">m</span>`;
+  }
   const m = s.m;
   ui.mfill.style.width = `${Math.max(2, m * 100)}%`;
   ui.mfill.style.background = momentumColor(m);
@@ -400,7 +406,12 @@ buildModeChips(ui.modeChips, mode.id, selectMode);
 
 ui.btnPlay.addEventListener('click', () => startRun(mode, randomSeed()));
 ui.btnDaily.addEventListener('click', () => startRun(mode, dailySeed(), { daily: true }));
-ui.btnAgain.addEventListener('click', () => startRun(mode, isDaily ? dailySeed() : randomSeed(), { daily: isDaily, beat: beatTarget }));
+ui.btnAgain.addEventListener('click', () => {
+  // A shared run is a challenge on ONE specific track — replaying it must keep the
+  // same seed, or "beat their 812m" would be measured against a different bridge.
+  if (beatTarget != null) startRun(mode, seed, { beat: beatTarget });
+  else startRun(mode, isDaily ? dailySeed() : randomSeed(), { daily: isDaily });
+});
 ui.btnBackMenu.addEventListener('click', toMenu);
 ui.btnShare.addEventListener('click', () => void shareRun());
 
