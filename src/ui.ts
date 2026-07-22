@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Ben Richardson — https://benrichardson.dev
+// Additional terms under AGPL-3.0 section 7(b) apply; see ADDITIONAL-TERMS.md.
 /**
  * ui.ts — builds the DOM shell (menu, HUD, results, modals, footer) and hands main.ts
  * the element refs + small update helpers. No game logic lives here.

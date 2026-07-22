@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Ben Richardson — https://benrichardson.dev
+// Additional terms under AGPL-3.0 section 7(b) apply; see ADDITIONAL-TERMS.md.
 /**
  * storage.ts — namespaced, quota-safe localStorage. Copied from patterns/.
  * Local-only by design; nothing here is authoritative across anyone.

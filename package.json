@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Outrun the dark — your momentum is your speed, your life and your score all at once.",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
