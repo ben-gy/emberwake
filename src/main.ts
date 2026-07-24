@@ -7,11 +7,6 @@
  * render.ts (view), bot.ts (benchmark) — this file is the conductor.
  */
 
-// feedback:begin (managed by hub/scripts/feedback/backfill.mjs)
-import { mountFeedback } from './feedback';
-mountFeedback();
-// feedback:end
-
 import './styles/mobile.css';
 import './styles/main.css';
 
